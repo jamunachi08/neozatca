@@ -1,0 +1,624 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{company}-{commercial_register}",
+ "creation": "2024-11-25 11:20:52.732617",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "set_up_tab",
+  "tab_2_tab",
+  "company",
+  "section_break_hzct",
+  "common_name",
+  "column_break_ciks",
+  "organization_identifier",
+  "egs_serial_number",
+  "organization_unit_name",
+  "location",
+  "industry",
+  "organization_name",
+  "country_name",
+  "invoice_type",
+  "tab_3_tab",
+  "api_endpoints",
+  "otp",
+  "column_break_zyfp",
+  "section_break_osgj",
+  "column_break_aaeh",
+  "section_break_mymv",
+  "column_break_tksk",
+  "section_break_rqpr",
+  "column_break_cbkk",
+  "column_break_koqt",
+  "registration_type",
+  "section_break_qvtv",
+  "column_break_pkih",
+  "section_break_rhex",
+  "address",
+  "commercial_register",
+  "section_break_jvhf",
+  "check_pcsid",
+  "check_csid",
+  "check_csr",
+  "column_break_ptkc",
+  "column_break_ulqf",
+  "invoice_one",
+  "invoice_two",
+  "invoice_three",
+  "invoice_four",
+  "invoice_five",
+  "invoice_six",
+  "section_break_bjdk",
+  "issuer_name",
+  "column_break_zfzf",
+  "serial_number509",
+  "certificate_hash",
+  "signature",
+  "phases",
+  "section_break_ilkf",
+  "column_break_wotm",
+  "status",
+  "zatca_credentials_tab",
+  "onboarding_section",
+  "onboarding_status",
+  "connected_on",
+  "column_break_onb",
+  "last_error",
+  "onboarding_log_section",
+  "onboarding_log",
+  "device_credentials_section",
+  "csr_config",
+  "csr",
+  "column_break_dev",
+  "pih",
+  "private_key",
+  "public_key",
+  "compliance_section",
+  "compliance_certificate",
+  "compliance_authorization",
+  "column_break_cmp",
+  "request_id",
+  "compliance_binary_security_token",
+  "compliance_secret",
+  "production_section",
+  "authorization",
+  "certificate",
+  "column_break_prd",
+  "production_request_id",
+  "binary_security_token",
+  "secret",
+  "token_type",
+  "certificate_expiry"
+ ],
+ "fields": [
+  {
+   "fieldname": "set_up_tab",
+   "fieldtype": "Tab Break",
+   "label": "Set Up"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Company Informations"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_hzct",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Generated during onboarding",
+   "fieldname": "common_name",
+   "fieldtype": "Data",
+   "label": "Common Name",
+   "read_only": 1,
+   "reqd": 0
+  },
+  {
+   "fieldname": "column_break_ciks",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "VAT number for this commercial register; may differ from the company's Tax ID.",
+   "fieldname": "organization_identifier",
+   "fieldtype": "Data",
+   "label": "Organization Identifier",
+   "reqd": 1
+  },
+  {
+   "description": "Generated during onboarding",
+   "fieldname": "egs_serial_number",
+   "fieldtype": "Data",
+   "label": "EGS Serial Number",
+   "read_only": 1,
+   "reqd": 0
+  },
+  {
+   "description": "The branch name for taxpayers\n",
+   "fieldname": "organization_unit_name",
+   "fieldtype": "Data",
+   "label": "Organization Unit Name"
+  },
+  {
+   "description": "Short Address : RRRD2929",
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "description": "businessCategory",
+   "fieldname": "industry",
+   "fieldtype": "Data",
+   "label": "Industry"
+  },
+  {
+   "description": "Stamped from the company's Arabic name when the CSR is created.",
+   "fetch_from": "company.company_name_in_arabic",
+   "fetch_if_empty": 1,
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "read_only": 1
+  },
+  {
+   "default": "SA",
+   "description": "Always SA.",
+   "fieldname": "country_name",
+   "fieldtype": "Data",
+   "label": "Country Name",
+   "read_only": 1
+  },
+  {
+   "description": "1100 = Standard + Simplified, 1000 = Standard (B2B) only, 0100 = Simplified (B2C) only",
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "label": "Invoice Type",
+   "options": "1100\n1000\n0100",
+   "default": "1100"
+  },
+  {
+   "fieldname": "tab_3_tab",
+   "fieldtype": "Tab Break",
+   "label": "Configuration"
+  },
+  {
+   "fieldname": "api_endpoints",
+   "fieldtype": "Select",
+   "label": "Environment",
+   "options": "sandbox\nsimulation\nproduction",
+   "default": "production",
+   "description": "production = Live (legally valid) · simulation = pre-production test via Fatoora Simulation · sandbox = developer portal",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "description": "From the Fatoora portal. Single-use; cleared after the compliance CSID is issued.",
+   "fieldname": "otp",
+   "fieldtype": "Data",
+   "label": "OTP",
+   "reqd": 1,
+   "read_only": 0
+  },
+  {
+   "fieldname": "column_break_zyfp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_osgj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_aaeh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_mymv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_tksk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rqpr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_cbkk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_koqt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Type of certificate like Commercial Registration Number.",
+   "fieldname": "registration_type",
+   "fieldtype": "Link",
+   "label": "Registration Type",
+   "options": "Registration Type"
+  },
+  {
+   "fieldname": "section_break_qvtv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_pkih",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rhex",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "commercial_register",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Commercial Register",
+   "no_copy": 1,
+   "options": "Commercial Register",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_jvhf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_pcsid",
+   "fieldtype": "Check",
+   "label": "Check PCSID"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_csid",
+   "fieldtype": "Check",
+   "label": "Check CSID"
+  },
+  {
+   "default": "0",
+   "fieldname": "check_csr",
+   "fieldtype": "Check",
+   "label": "Check CSR"
+  },
+  {
+   "fieldname": "column_break_ptkc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ulqf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_one",
+   "fieldtype": "Check",
+   "label": "Invoice One"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_two",
+   "fieldtype": "Check",
+   "label": "Invoice Two"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_three",
+   "fieldtype": "Check",
+   "label": "Invoice Three"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_four",
+   "fieldtype": "Check",
+   "label": "Invoice Four"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_five",
+   "fieldtype": "Check",
+   "label": "Invoice Five"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_six",
+   "fieldtype": "Check",
+   "label": "Invoice Six"
+  },
+  {
+   "fieldname": "section_break_bjdk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "issuer_name",
+   "fieldtype": "Small Text",
+   "label": "Issuer Name"
+  },
+  {
+   "fieldname": "column_break_zfzf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "serial_number509",
+   "fieldtype": "Data",
+   "label": "Serial Number509"
+  },
+  {
+   "description": "Make Hash To Certificate And encode 64",
+   "fieldname": "certificate_hash",
+   "fieldtype": "Small Text",
+   "label": "Certificate Hash"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Small Text",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "phases",
+   "fieldtype": "Select",
+   "label": "Phases",
+   "options": "Phase 1\nPhase 2"
+  },
+  {
+   "fieldname": "section_break_ilkf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_wotm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "is_virtual": 1,
+   "label": "Status",
+   "options": "Not Connected\nConnected"
+  },
+  {
+   "fieldname": "zatca_credentials_tab",
+   "fieldtype": "Tab Break",
+   "label": "ZATCA Credentials"
+  },
+  {
+   "fieldname": "onboarding_section",
+   "fieldtype": "Section Break",
+   "label": "Onboarding"
+  },
+  {
+   "fieldname": "onboarding_status",
+   "fieldtype": "Select",
+   "label": "Onboarding Status",
+   "options": "Not Started\nQueued\nIn Progress\nCompleted\nFailed",
+   "default": "Not Started",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "connected_on",
+   "fieldtype": "Datetime",
+   "label": "Connected On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_onb",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "onboarding_log_section",
+   "fieldtype": "Section Break",
+   "label": "Onboarding Log",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "onboarding_log",
+   "fieldtype": "Code",
+   "label": "Onboarding Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "device_credentials_section",
+   "fieldtype": "Section Break",
+   "label": "Device Credentials (1–5)"
+  },
+  {
+   "fieldname": "csr_config",
+   "fieldtype": "Code",
+   "label": "1. CSR Config",
+   "read_only": 1
+  },
+  {
+   "fieldname": "csr",
+   "fieldtype": "Code",
+   "label": "2. CSR (base64)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dev",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "pih",
+   "fieldtype": "Data",
+   "label": "3. PIH (initial Previous Invoice Hash)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "private_key",
+   "fieldtype": "Code",
+   "label": "4. Private Key",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "public_key",
+   "fieldtype": "Code",
+   "label": "5. Public Key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "compliance_section",
+   "fieldtype": "Section Break",
+   "label": "Compliance CSID (6–8)"
+  },
+  {
+   "fieldname": "compliance_certificate",
+   "fieldtype": "Code",
+   "label": "6. Compliance Certificate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "compliance_authorization",
+   "fieldtype": "Long Text",
+   "label": "7. Basic Auth (Compliance CSID)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_cmp",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "request_id",
+   "fieldtype": "Data",
+   "label": "8. Compliance Request ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "compliance_binary_security_token",
+   "fieldtype": "Long Text",
+   "label": "Compliance Binary Security Token",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "compliance_secret",
+   "fieldtype": "Small Text",
+   "label": "Compliance Secret",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "production_section",
+   "fieldtype": "Section Break",
+   "label": "Production CSID (9)"
+  },
+  {
+   "fieldname": "authorization",
+   "fieldtype": "Long Text",
+   "label": "9. Final Auth (Production CSID)",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "certificate",
+   "fieldtype": "Code",
+   "label": "Active Certificate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_prd",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "production_request_id",
+   "fieldtype": "Data",
+   "label": "Production Request ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "binary_security_token",
+   "fieldtype": "Text",
+   "label": "Active Binary Security Token",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "secret",
+   "fieldtype": "Text",
+   "label": "Active Secret",
+   "read_only": 1,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "token_type",
+   "fieldtype": "Small Text",
+   "label": "Token Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "certificate_expiry",
+   "fieldtype": "Date",
+   "label": "Certificate Expiry",
+   "read_only": 1,
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-26 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoZatca",
+ "name": "NeoZatca Setting",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "print": 1
+  },
+  {
+   "role": "All",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
