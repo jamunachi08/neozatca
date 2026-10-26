@@ -1,0 +1,541 @@
+/* ============================================================
+   NEOZATCA Sales Invoice - WeasyPrint Optimized
+   Version: 2.1 (Merged with Font Logic)
+   ============================================================ */
+
+/* 1. THE MAGIC LINKER (REQUIRED FOR PYTHON SCRIPT) */
+@font-face { 
+    font-family: 'Claudion';
+    font-style: normal;
+    font-weight: 400;
+    src: url('__FONT_REG_CLAUDION_PATH__') format('truetype');
+}
+@font-face {
+  font-family: "Almarai";
+  font-weight: 400;
+  font-style: normal;
+  src: url('__FONT_REG_MARAI_PATH__') format('truetype');
+}
+@font-face {
+  font-family: "Almarai";
+  font-weight: 700;
+  font-style: normal;
+  src: url('__FONT_BOLD_MARAI_PATH__') format('truetype');
+}
+
+/* 2. CSS CUSTOM PROPERTIES */
+:root {
+    /* Colors */
+    --color-primary: #C5D9F0;
+    --color-primary-dark: #a8c4e6;
+    --color-background: #ffffff;
+    --color-background-alt: #f5f5f5;
+    --color-border: #d0d0d0;
+    --color-border-light: #e0e0e0;
+    --color-text: #333333;
+    
+    /* Spacing */
+    --spacing-xs: 1px;
+    --spacing-sm: 2px;
+    --spacing-md: 4px;
+    --spacing-lg: 8px;
+    --spacing-xl: 12px;
+
+    /* Typography */
+    --font-size-xs: 10px;
+    --font-size-sm: 11px; /* Slightly smaller for print density */
+    --font-size-base: 12px;
+    --font-size-lg: 14px;
+    --font-size-xl: 18px;
+
+    /* Font Families - We combine them here */
+    --font-stack-main: 'Claudion', 'Almarai', sans-serif;
+    
+    /* Borders */
+    --border-radius-md: 8px;
+    --border-width: 1px;
+    
+    /* Table specific */
+    --table-header-bg: var(--color-primary);
+    --table-border-color: var(--color-border);
+}
+
+/* 3. GLOBAL RESET (The Nuclear Option - Refined) */
+/* This ensures your custom font hits every single element */
+body, html, .print-format, div, p, span, a, h1, h2, h3, h4, h5, h6,
+table, tbody, thead, tfoot, tr, th, td {
+    font-family: var(--font-stack-main) !important;
+}
+
+/* ==================== PAGE SETUP ==================== */
+@page {
+    size: A4;
+    /* We reduce margins because your HTML table handles the whitespace */
+    margin: 10mm; 
+    
+    @bottom-center {
+        content: "Page " counter(page) " of " counter(pages);
+        font-family: var(--font-stack-main) !important;
+        font-size: 9px;
+    }
+}
+
+/* ============================================================
+   3. BASE STYLES
+   ============================================================ */
+.print-format-container {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    line-height: var(--line-height-normal);
+    background-color: var(--color-background);
+}
+
+.print-format {
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm);
+}
+
+/* 
+   Reset padding ONLY on main layout table cells, not on styled tables.
+   This allows .header-table, .info-table, .items-table etc. to have their own padding.
+   NO !important needed - CSS cascade handles it correctly.
+*/
+
+/* ============================================================
+   4. LAYOUT COMPONENTS
+   ============================================================ */
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Only reset padding on main-table's direct cell children (layout cells) */
+.main-table>thead>tr>td,
+.main-table>tbody>tr>td,
+.main-table>tfoot>tr>td {
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+/* ============================================================
+   5. HEADER SECTION (Symmetric Layout)
+   ============================================================ */
+/* .header-flex {
+    display: flex;
+} */
+
+  /* --- HEADER LAYOUT --- */
+    .header-layout-table { width: 100%; border: none; margin-bottom: 10px; }
+    .header-logo-col { width: 40%; vertical-align: middle; }
+    .header-details-col { width: 60%; vertical-align: top; }
+
+.company-logo {
+    max-width: 180px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+}
+.letterhead-table {
+    width: 100%;
+}
+
+.letterhead-table th,
+.letterhead-table td {
+    padding: 0 !important;
+}
+
+.header_table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px 10px 0 0 !important;
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-sm);
+}
+
+.header_table th {
+    background-color: var(--primary-bg);
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-title-en {
+    width: 33%;
+    font-size: 18px;
+    text-align: left;
+}
+
+.header-spacer {
+    width: 34%;
+}
+
+.header-title-ar {
+    width: 33%;
+    text-align: right;
+    font-size: 20px;
+}
+
+.header_table tbody td {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    border-bottom: 1px solid var(--border-color);
+    font-size: var(--font-size-base);
+    vertical-align: middle !important;
+}
+
+.header_table .label-cell {
+    font-weight: 800;
+}
+
+.header_table .label-cell strong {
+    font-weight: 800;
+}
+
+.header-table .label-cell strong {
+    font-weight: 800;
+    /* Maximum bold */
+}
+
+.header-table tbody td {
+    padding: 0 0 !important;
+    padding: 0 0 !important;
+    border-bottom: var(--border-width) solid var(--color-border-light);
+    font-size: var(--font-size-base);
+}
+
+/* ============================================================
+   6. INFORMATION TABLES (Seller/Client)
+   ============================================================ */
+.info-tables-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-table {
+    flex: 1;
+    border-collapse: collapse;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.info-table thead td {
+    background-color: var(--table-header-bg);
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 700;
+}
+
+.info-header--left {
+    text-align: left;
+    border-radius: var(--border-radius-lg) 0 0 0;
+}
+
+.info-header--right {
+    text-align: right;
+    border-radius: 0 var(--border-radius-lg) 0 0;
+}
+
+.info-table tbody td {
+    /* Must use !important to override frappe/templates/styles/standard.css line 146 */
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    vertical-align: middle !important;
+    border: var(--border-width) solid var(--color-border-light);
+    font-size: var(--font-size-base);
+}
+
+.info-table tbody tr:last-child td {
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.label-cell {
+    font-weight: 600;
+    width: 25%;
+    white-space: nowrap;
+}
+
+.label-cell--name {
+    width: 15%;
+}
+
+/* ============================================================
+   7. ITEMS TABLE
+   ============================================================ */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: var(--shadow-sm);
+    margin: var(--spacing-lg) 0;
+}
+
+.items-header {
+    background-color: var(--table-header-bg);
+    padding: var(--spacing-md);
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    text-align: center;
+    border-right: var(--border-width) solid var(--table-border-color);
+    white-space: nowrap;
+}
+
+.items-header--first {
+    border-radius: var(--border-radius-lg) 0 0 0;
+}
+
+.items-header--last {
+    border-radius: 0 var(--border-radius-lg) 0 0;
+    border-right: none;
+}
+
+.items-row:nth-child(even) {
+    background-color: var(--color-background-alt);
+}
+
+.items-row:hover {
+    background-color: var(--table-row-hover);
+}
+
+.items-cell {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: var(--border-width) solid var(--color-border-light);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.items-cell--serial {
+    width: 5%;
+}
+
+.items-cell--item-code,
+.items-cell--description {
+    text-align: left;
+}
+
+.items-cell--description {
+    width: 20%;
+}
+
+/* ============================================================
+   8. FOOTER SECTION
+   ============================================================ */
+.footer-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-qr {
+    flex: 0 0 28%;
+    position: relative;
+    overflow: hidden;
+    padding: var(--spacing-sm);
+}
+
+.qr-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: calc(100% - 2 * var(--spacing-sm));
+    object-fit: contain;
+}
+
+.footer-totals {
+    flex: 1;
+}
+
+/* ============================================================
+   9. TOTALS TABLE
+   ============================================================ */
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.totals-table th,
+.totals-table td {
+    padding: var(--spacing-sm) !important;
+    border: var(--border-width) solid var(--table-border-color);
+    font-size: var(--font-size-base);
+}
+
+.totals-table th.totals-label-en {
+    text-align: left;
+    width: 32.5%;
+    font-weight: 600;
+    border-right: none;
+}
+
+.totals-table th.totals-label-ar {
+    text-align: right;
+    width: 32.5%;
+    font-weight: 600;
+    border-left: none;
+}
+
+.totals-table td {
+    text-align: center;
+    width: 35%;
+}
+
+.grand-total-row {
+    background-color: var(--table-header-bg);
+}
+
+.grand-total-row th,
+.grand-total-row td {
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+}
+
+.currency-separator td {
+    background-color: var(--table-header-bg);
+    padding: var(--spacing-md);
+    font-weight: 600;
+}
+
+/* ============================================================
+   10. PAYMENT & PREPAYMENT TABLES
+   ============================================================ */
+.payments-table,
+.prepayments-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.payments-header,
+.prepayments-header {
+    background-color: var(--table-header-bg);
+    padding: var(--spacing-md);
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    text-align: center;
+    border: var(--border-width) solid var(--table-border-color);
+}
+
+.payments-table td,
+.prepayments-table td {
+    padding: var(--spacing-sm) !important;
+    border: var(--border-width) solid var(--color-border-light);
+    text-align: center;
+    font-size: var(--font-size-base);
+}
+
+.prepayments-totals {
+    background-color: var(--color-background-alt);
+    font-weight: 700;
+}
+
+/* ============================================================
+   11. BANK DETAILS
+   ============================================================ */
+.bank-details {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+}
+
+.bank-table {
+    width: 100%;
+}
+
+.bank-table p {
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+}
+
+.iban-number {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ============================================================
+   12. AMOUNT IN WORDS & SIGNATURES
+   ============================================================ */
+.amount-in-words {
+    background-color: var(--table-header-bg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--border-radius-md);
+}
+
+.signatures {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-lg);
+}
+
+.signature-block {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-sm);
+}
+
+.signature-label {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.signature-line {
+    display: inline-block;
+    width: 150px;
+    border-bottom: 1px solid var(--color-text);
+}
+
+/* ============================================================
+   13. UTILITY CLASSES
+   ============================================================ */
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.font-bold {
+    font-weight: 700 !important;
+}
+
+
+/* Currency Value Styling */
+.currency-value {
+    font-family: var(--font-family-currency);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+/* Responsive adjustments for smaller paper sizes */
+@media print and (max-width: 210mm) {
+    :root {
+        --font-size-base: 12px;
+        --font-size-sm: 10px;
+    }
+
+    .header-title--left,
+    .header-title--right {
+        font-size: var(--font-size-lg);
+    }
+}

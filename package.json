@@ -1,0 +1,16 @@
+{
+  "name": "neozatca",
+  "version": "1.3.1",
+  "description": "NeoZatca \u2014 ZATCA e-invoicing for ERPNext. The onboarding SPA is committed pre-built; no Node build runs on deploy.",
+  "scripts": {
+    "dev:onboarding": "cd zatca-onboarding && yarn install && yarn dev",
+    "build:onboarding": "cd zatca-onboarding && yarn install --frozen-lockfile && yarn build"
+  },
+  "keywords": [],
+  "author": "Neotec Integrated Solutions <support@neotec.ai>",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
