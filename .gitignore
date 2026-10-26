@@ -1,0 +1,19 @@
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+tags
+node_modules
+neozatca/zatca/__pycache__/
+__pycache__/
+*.pyc
+*.cpython-310.pyc
+*__pycache__*
+
+neozatca/public/node_modules
+neozatca/public/dist/
+neozatca/public/zatca-onboarding/
+neozatca/public/zatca-onboarding/zatca_onboarding.js
+
+# Print Format JSON files (auto-generated with embedded HTML/CSS)
+neozatca/neozatca/print_format/zatca_sales_invoice/zatca_sales_invoice.json

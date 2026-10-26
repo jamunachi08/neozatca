@@ -1,0 +1,15 @@
+{
+  "name": "neozatca",
+  "version": "1.1.0",
+  "description": "NeoZatca \u2014 ZATCA e-invoicing for ERPNext",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd zatca-onboarding && yarn install",
+    "dev": "cd zatca-onboarding && yarn dev",
+    "build": "cd zatca-onboarding && yarn build"
+  },
+  "keywords": [],
+  "author": "Neotec Integrated Solutions <support@neotec.ai>",
+  "license": "MIT"
+}

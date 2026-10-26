@@ -1,0 +1,33 @@
+[project]
+name = "neozatca"
+authors = [
+    { name = "Neotec Integrated Solutions", email = "support@neotec.ai" }
+]
+description = "NeoZatca — ZATCA e-invoicing (Phase 1 & Phase 2) for ERPNext"
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+dynamic = ["version"]
+dependencies = [
+    # frappe / erpnext are installed and managed by bench (see frappe-dependencies below)
+    "cryptography>=44.0.1",
+    "asn1==2.7.1",
+    "qrcode>=8.0,<9",
+    "pikepdf>=8.0.0",
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "neozatca"
+
+# Required by Frappe Cloud to pick a compatible bench for this app.
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<17.0.0"
+erpnext = ">=15.0.0,<17.0.0"
+
+# These dependencies are only installed when developer mode is enabled
+[tool.bench.dev-dependencies]
+# package_name = "~=1.1.0"
