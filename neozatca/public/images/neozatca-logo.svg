@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NeoZatca">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2F244A"/><stop offset="1" stop-color="#8A6FE0"/></linearGradient></defs>
+  <path d="M32 2 58 17v30L32 62 6 47V17z" fill="url(#g)"/>
+  <g fill="#fff">
+    <path d="M18 18h10v10H18zM36 18h10v10H36zM18 36h10v10H18z"/>
+  </g>
+  <g fill="#47386E"><path d="M20 20h6v6h-6zM38 20h6v6h-6zM20 38h6v6h-6z"/></g>
+  <g fill="#fff"><path d="M22 22h2v2h-2zM40 22h2v2h-2zM22 40h2v2h-2zM31 18h2v4h-2zM31 25h2v3h-2zM36 31h4v2h-4zM43 31h3v2h-3zM31 31h3v3h-3zM36 36h3v3h-3zM42 36h4v2h-4zM31 37h2v6h-2zM36 42h4v4h-4zM43 41h3v5h-3z"/></g>
+</svg>
