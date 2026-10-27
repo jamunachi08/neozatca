@@ -1,0 +1,118 @@
+{
+ "charts": [
+  {
+   "chart_name": "Zatca Accepted Status",
+   "label": "Zatca Accepted Status"
+  },
+  {
+   "chart_name": "Zatca End Point Count",
+   "label": "Zatca Logs End-point Count"
+  },
+  {
+   "chart_name": "NeoZatca Logs Count",
+   "label": "NeoZatca Logs Count"
+  }
+ ],
+ "content": "[{\"id\": \"ZNyKNnirFh\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">ZATCA</span>\", \"col\": 12}}, {\"id\": \"39c0Irai7w\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ZATCA Process Flow\", \"col\": 3}}, {\"id\": \"6vjSbu-6og\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ZATCA Control Center\", \"col\": 3}}, {\"id\": \"LmghFjUekg\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ZATCA Devices\", \"col\": 3}}, {\"id\": \"obLy6to0LA\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ZATCA Settings\", \"col\": 3}}, {\"id\": \"XSMNoQKh7Q\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Zatca Logs\", \"col\": 3}}, {\"id\": \"XQznMhjG9g\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">ZATCA links</span>\", \"col\": 12}}, {\"id\": \"Yjh6AkfZ3A\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Fatoora Portal\", \"col\": 4}}, {\"id\": \"8dhbjwAihQ\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Developer Portal (Sandbox)\", \"col\": 4}}, {\"id\": \"gktLFjD0Kw\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"E-Invoice Specifications\", \"col\": 4}}, {\"id\": \"gUygzWXlFA\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"PeQOP9V4aX\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Failed Zatca Invoice\", \"col\": 6}}, {\"id\": \"aoinfGtb0O\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total Success Zatca Invoice\", \"col\": 6}}, {\"id\": \"SVdzvZ8x5M\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Zatca Logs End-point Count\", \"col\": 6}}, {\"id\": \"Wm_QtdR2zq\", \"type\": \"chart\", \"data\": {\"chart_name\": \"NeoZatca Logs Count\", \"col\": 6}}, {\"id\": \"aIBOg4c2Ys\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Zatca Accepted Status\", \"col\": 12}}, {\"id\": \"95B1LijhF1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Zatca Onboarding\", \"col\": 3}}]",
+ "creation": "2025-03-20 10:13:10.284989",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "table",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "ZATCA",
+ "links": [],
+ "modified": "2026-10-26 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoZatca",
+ "name": "ZATCA",
+ "number_cards": [
+  {
+   "label": "Total Success Zatca Invoice",
+   "number_card_name": "Total Success Zatca Invoice"
+  },
+  {
+   "label": "Total Failed Zatca Invoice",
+   "number_card_name": "Total Failed Zatca Invoice"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Zatca Manager"
+  }
+ ],
+ "sequence_id": 28.0,
+ "shortcuts": [
+  {
+   "label": "ZATCA Process Flow",
+   "type": "Page",
+   "link_to": "zatca-process-flow",
+   "color": "Purple"
+  },
+  {
+   "label": "ZATCA Control Center",
+   "type": "Page",
+   "link_to": "zatca-control-center",
+   "color": "Blue"
+  },
+  {
+   "label": "ZATCA Devices",
+   "type": "DocType",
+   "link_to": "NeoZatca Setting",
+   "doc_view": "List",
+   "color": "Green"
+  },
+  {
+   "label": "ZATCA Settings",
+   "type": "DocType",
+   "link_to": "Zatca Main Settings",
+   "color": "Grey"
+  },
+  {
+   "label": "Fatoora Portal",
+   "type": "URL",
+   "url": "https://fatoora.zatca.gov.sa/",
+   "color": "Green"
+  },
+  {
+   "label": "Developer Portal (Sandbox)",
+   "type": "URL",
+   "url": "https://sandbox.zatca.gov.sa/",
+   "color": "Red"
+  },
+  {
+   "label": "E-Invoice Specifications",
+   "type": "URL",
+   "url": "https://zatca.gov.sa/en/E-Invoicing/SystemsDevelopers/Pages/E-Invoice-specifications.aspx",
+   "color": "Grey"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Zatca Logs",
+   "link_to": "NeoZatca Logs",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Zatca Onboarding",
+   "link_to": "zatca-onboarding",
+   "type": "Page"
+  }
+ ],
+ "title": "ZATCA"
+}
