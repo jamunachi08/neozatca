@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-22 14:17:05.501577",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_cancel_invoice",
+  "enable_delete_invoice",
+  "enable_neozatca",
+  "phase",
+  "column_break_cehc",
+  "manual_submit",
+  "sending_is_restricted_to_todays_date",
+  "pdf_a3_defaults_section",
+  "print_format",
+  "language",
+  "column_break_huqc",
+  "letter_head",
+  "national_address_section",
+  "national_address_api_key",
+  "column_break_na",
+  "national_address_language"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_cancel_invoice",
+   "fieldtype": "Check",
+   "label": "Enable Cancel Invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_delete_invoice",
+   "fieldtype": "Check",
+   "label": "Enable Delete Invoice"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_neozatca",
+   "fieldtype": "Check",
+   "label": "Enable NeoZatca"
+  },
+  {
+   "fieldname": "phase",
+   "fieldtype": "Select",
+   "label": "Phase",
+   "options": "Phase One\nPhase Two"
+  },
+  {
+   "fieldname": "column_break_cehc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "manual_submit",
+   "fieldtype": "Check",
+   "label": "Manual Submit"
+  },
+  {
+   "default": "0",
+   "fieldname": "sending_is_restricted_to_todays_date",
+   "fieldtype": "Check",
+   "label": "Sending is Restricted to Today's Date"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "pdf_a3_defaults_section",
+   "fieldtype": "Section Break",
+   "label": "PDF A3 Defaults"
+  },
+  {
+   "fieldname": "print_format",
+   "fieldtype": "Link",
+   "label": "Print Format",
+   "options": "Print Format"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Link",
+   "label": "Language",
+   "options": "Language"
+  },
+  {
+   "fieldname": "column_break_huqc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "letter_head",
+   "fieldtype": "Link",
+   "label": "Letter Head",
+   "options": "Letter Head"
+  },
+  {
+   "fieldname": "national_address_section",
+   "fieldtype": "Section Break",
+   "label": "Saudi National Address",
+   "collapsible": 1,
+   "description": "Fill addresses from the national register (Saudi Post / SPL). Get a subscription key at https://api.address.gov.sa"
+  },
+  {
+   "fieldname": "national_address_api_key",
+   "fieldtype": "Password",
+   "label": "National Address API Key",
+   "length": 200
+  },
+  {
+   "fieldname": "column_break_na",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "national_address_language",
+   "fieldtype": "Select",
+   "label": "Result Language",
+   "options": "E\nA",
+   "default": "E",
+   "description": "E = English, A = Arabic"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-27 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "NeoZatca",
+ "name": "Zatca Main Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

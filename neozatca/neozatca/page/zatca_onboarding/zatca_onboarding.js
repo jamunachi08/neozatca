@@ -1,0 +1,35 @@
+frappe.__original_msgprint = frappe.msgprint;
+
+frappe.pages['zatca-onboarding'].on_page_load = function (wrapper) {
+    const page = frappe.ui.make_app_page({
+        parent: wrapper,
+        title: '',
+        single_column: true,
+    });
+
+    $('#body').append('<div id="root"></div>');
+    $('header').remove();
+    $('.content.page-container').remove()
+
+    frappe.require(`/assets/neozatca/zatca-onboarding/zatca_onboarding.js?v=${(frappe.boot.versions || {}).neozatca || Date.now()}`, () => {
+        console.log('React online');
+        $('link[rel="stylesheet"][href*="desk.bundle"]').remove();
+    })
+
+    frappe.msgprint = (msg, title) => {
+        if (location.pathname.includes('/app/zatca-onboarding')) {
+            console.warn(msg, title);
+        }
+        else {
+            frappe.__original_msgprint(msg, title);
+        }
+    }
+
+
+
+    frappe.router.on('change', () => {
+        window.location.reload();
+    });
+
+
+};
